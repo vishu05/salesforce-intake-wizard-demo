@@ -1,0 +1,13 @@
+<template>
+    <h2 class="slds-text-heading_small slds-var-m-bottom_small">Step 2 — Primary Individual</h2>
+    <lightning-input type="checkbox" label="Name Unknown" checked={unknown} onchange={handleUnknown}></lightning-input>
+    <div class="slds-grid slds-wrap slds-gutters">
+        <lightning-input class="slds-col slds-size_1-of-2" label="First Name" disabled={unknown} value={firstName} data-field="First_Name__c" onchange={handleChange}></lightning-input>
+        <lightning-input class="slds-col slds-size_1-of-2" label="Last Name" disabled={unknown} value={lastName} data-field="Last_Name__c" onchange={handleChange}></lightning-input>
+        <lightning-input class="slds-col slds-size_1-of-2" label="Date of Birth" type="date" value={dob} data-field="DOB__c" onchange={handleChange}></lightning-input>
+        <lightning-input class="slds-col slds-size_1-of-2" label="Approximate Age (auto from DOB)" type="number" value={approxAge} data-field="Approx_Age__c" onchange={handleChange}></lightning-input>
+    </div>
+    <lightning-button class="slds-var-m-top_small" label="Check for Duplicates" onclick={handleDuplicateCheck}></lightning-button>
+    <p class="slds-var-m-top_small slds-text-body_small">Example (fictional): Alex Morgan, age ~11.</p>
+    <c-intake-address-form></c-intake-address-form>
+</template>

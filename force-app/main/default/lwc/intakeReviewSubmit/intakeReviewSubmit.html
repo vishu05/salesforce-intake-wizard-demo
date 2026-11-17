@@ -1,0 +1,19 @@
+<template>
+    <h2 class="slds-text-heading_small slds-var-m-bottom_small">Step 5 — Attachments &amp; Review</h2>
+    <template if:true={intake.Id}>
+        <lightning-file-upload label="Supporting Attachments" record-id={intake.Id} accept=".pdf,.png,.jpg,.docx"></lightning-file-upload>
+    </template>
+    <template if:false={intake.Id}>
+        <p class="slds-text-body_small">Save a draft first to enable file attachments.</p>
+    </template>
+    <div class="slds-box slds-var-m-top_medium">
+        <p><strong>Status:</strong> {intake.Status__c}</p>
+        <p><strong>Request Type:</strong> {intake.Request_Type__c}</p>
+        <p><strong>Priority:</strong> {intake.Priority__c}</p>
+        <p><strong>Narrative:</strong> {intake.Narrative__c}</p>
+        <p class="slds-var-m-top_small"><strong>Participants:</strong></p>
+        <template for:each={participantRows} for:item="row">
+            <p key={row.key}>• {row.label}</p>
+        </template>
+    </div>
+</template>

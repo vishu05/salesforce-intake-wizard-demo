@@ -1,0 +1,9 @@
+<template>
+    <h2 class="slds-text-heading_small slds-var-m-bottom_small">Step 4 — Request Details</h2>
+    <div class="slds-grid slds-wrap slds-gutters">
+        <lightning-combobox class="slds-col slds-size_1-of-2" label="Request Type" value={requestType} options={requestTypeOptions} data-field="Request_Type__c" onchange={handleChange}></lightning-combobox>
+        <lightning-combobox class="slds-col slds-size_1-of-2" label="Priority" value={priority} options={priorityOptions} data-field="Priority__c" onchange={handleChange}></lightning-combobox>
+        <lightning-input class="slds-col slds-size_1-of-2" label="Request Date" type="date" value={requestDate} data-field="Request_Date__c" onchange={handleChange}></lightning-input>
+    </div>
+    <lightning-textarea label="Narrative" value={narrative} data-field="Narrative__c" onchange={handleChange}></lightning-textarea>
+</template>

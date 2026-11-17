@@ -1,0 +1,53 @@
+<template>
+    <lightning-card title="Service Intake Wizard — Northstar Family Support Network (Demo)">
+        <div class="slds-var-p-around_medium">
+            <lightning-progress-indicator current-step={currentStepValue} type="base" variant="base">
+                <template for:each={steps} for:item="step">
+                    <lightning-progress-step key={step.value} label={step.label} value={step.value}></lightning-progress-step>
+                </template>
+            </lightning-progress-indicator>
+
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-alert_error slds-var-m-top_medium" role="alert">{errorMessage}</div>
+            </template>
+            <template if:true={duplicateWarning}>
+                <div class="slds-notify slds-notify_alert slds-alert_warning slds-var-m-top_medium" role="alert">{duplicateWarning}</div>
+            </template>
+
+            <div class="slds-var-m-top_large">
+                <template if:true={isStep1}>
+                    <c-intake-reporting-source participants={participants} addresses={addresses} onparticipantchange={handleParticipantChange}></c-intake-reporting-source>
+                </template>
+                <template if:true={isStep2}>
+                    <c-intake-primary-individual participants={participants} onparticipantchange={handleParticipantChange} onduplicatecheck={handleDuplicateCheck}></c-intake-primary-individual>
+                </template>
+                <template if:true={isStep3}>
+                    <c-intake-participants participants={participants} onparticipantchange={handleParticipantChange}></c-intake-participants>
+                </template>
+                <template if:true={isStep4}>
+                    <c-intake-request-details intake={intake} onintakechange={handleIntakeChange}></c-intake-request-details>
+                </template>
+                <template if:true={isStep5}>
+                    <c-intake-review-submit intake={intake} participants={participants}></c-intake-review-submit>
+                    <c-intake-referral-history participant-id={primaryParticipantId}></c-intake-referral-history>
+                </template>
+            </div>
+
+            <div class="slds-var-m-top_large slds-grid slds-grid_align-spread">
+                <lightning-button label="Previous" onclick={handlePrevious} disabled={isFirstStep}></lightning-button>
+                <div>
+                    <lightning-button label="Save Draft" onclick={handleSaveDraft} class="slds-var-m-right_small"></lightning-button>
+                    <template if:false={isLastStep}>
+                        <lightning-button label="Next" variant="brand" onclick={handleNext}></lightning-button>
+                    </template>
+                    <template if:true={isLastStep}>
+                        <lightning-button label="Submit Referral" variant="brand" onclick={handleSubmit}></lightning-button>
+                    </template>
+                </div>
+            </div>
+            <template if:true={savedMessage}>
+                <p class="slds-var-m-top_small slds-text-color_success">{savedMessage}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

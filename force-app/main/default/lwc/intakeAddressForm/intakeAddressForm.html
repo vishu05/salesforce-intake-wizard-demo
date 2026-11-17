@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-var-m-top_medium">
+        <h3 class="slds-text-heading_small">Address</h3>
+        <div class="slds-grid slds-wrap slds-gutters">
+            <lightning-input class="slds-col slds-size_1-of-1" label="Address Line 1" value={line1} data-field="line1" onchange={handleChange}></lightning-input>
+            <lightning-input class="slds-col slds-size_1-of-3" label="City" value={city} data-field="city" onchange={handleChange}></lightning-input>
+            <lightning-input class="slds-col slds-size_1-of-3" label="State" value={stateCode} data-field="stateCode" onchange={handleChange}></lightning-input>
+            <lightning-input class="slds-col slds-size_1-of-3" label="ZIP" value={zip} data-field="zip" onchange={handleChange}></lightning-input>
+        </div>
+        <lightning-button label="Validate Address" onclick={handleValidate}></lightning-button>
+        <template if:true={message}>
+            <p class="slds-var-m-top_small">{message}</p>
+        </template>
+    </div>
+</template>

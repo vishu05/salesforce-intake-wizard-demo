@@ -1,0 +1,15 @@
+<template>
+    <h2 class="slds-text-heading_small slds-var-m-bottom_small">Step 3 — Participants</h2>
+    <p class="slds-var-m-bottom_small">Add household members, caregivers, or witnesses. Example: Taylor Morgan — Parent / Caregiver.</p>
+    <template for:each={others} for:item="person">
+        <div key={person.key} class="slds-box slds-var-m-bottom_small">
+            <div class="slds-grid slds-wrap slds-gutters">
+                <lightning-input class="slds-col slds-size_1-of-3" label="First Name" value={person.First_Name__c} data-index={person.index} data-field="First_Name__c" onchange={handleChange}></lightning-input>
+                <lightning-input class="slds-col slds-size_1-of-3" label="Last Name" value={person.Last_Name__c} data-index={person.index} data-field="Last_Name__c" onchange={handleChange}></lightning-input>
+                <lightning-input class="slds-col slds-size_1-of-3" label="Relationship" value={person.Relationship__c} data-index={person.index} data-field="Relationship__c" onchange={handleChange}></lightning-input>
+            </div>
+            <lightning-button label="Remove" data-index={person.index} onclick={handleRemove}></lightning-button>
+        </div>
+    </template>
+    <lightning-button label="Add Participant" variant="brand-outline" onclick={handleAdd}></lightning-button>
+</template>

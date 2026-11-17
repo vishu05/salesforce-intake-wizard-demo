@@ -1,0 +1,11 @@
+<template>
+    <h2 class="slds-text-heading_small slds-var-m-bottom_small">Step 1 — Reporting Source</h2>
+    <div class="slds-grid slds-wrap slds-gutters">
+        <lightning-input class="slds-col slds-size_1-of-2" label="First Name" value={firstName} data-field="First_Name__c" onchange={handleChange}></lightning-input>
+        <lightning-input class="slds-col slds-size_1-of-2" label="Last Name" required value={lastName} data-field="Last_Name__c" onchange={handleChange}></lightning-input>
+        <lightning-input class="slds-col slds-size_1-of-2" label="Phone" type="tel" value={phone} data-field="Phone__c" onchange={handleChange}></lightning-input>
+        <lightning-input class="slds-col slds-size_1-of-2" label="Email" type="email" value={email} data-field="Email__c" onchange={handleChange}></lightning-input>
+    </div>
+    <p class="slds-var-m-top_small slds-text-body_small">Example (fictional): Jamie Rivera, Lincoln Elementary — School Counselor.</p>
+    <c-intake-address-form></c-intake-address-form>
+</template>

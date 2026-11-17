@@ -1,0 +1,6 @@
+<template>
+    <template if:true={hasHistory}>
+        <h3 class="slds-text-heading_small slds-var-m-top_large slds-var-m-bottom_small">Prior Referrals for this Individual</h3>
+        <lightning-datatable key-field="intakeId" data={history} columns={columns} hide-checkbox-column></lightning-datatable>
+    </template>
+</template>
